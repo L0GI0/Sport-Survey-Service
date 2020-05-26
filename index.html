@@ -1,0 +1,184 @@
+<html>
+	<head>
+		<title>Project II</title>
+		<script src="menu.js"></script>
+		<script src="client.js"></script>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="index.css">
+		<link rel="stylesheet" type="text/css" href="menu.css">
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+		<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+		<style>
+			body {
+				background-color: #152850;
+				background-size: cover;
+				background-repeat: no-repeat;
+
+			}
+		</style>
+	</head>
+	<body onload="checkIfLogged()">
+
+		<article id="logInOrSignInContainer" class="center hide">
+			<h2 id="signUpOrLogInTitle">Zaloguj się</h2>
+			<input id="iUsername" type="text" placeholder="Nazwa użytkownika..." /><br />
+			<input id="iPassword" type="password" placeholder="Hasło..." /><br>
+			<button id="btnSignUpOrLogIn" class="btn" style="width: 180px; height: 70px" onclick="logInOrRegister(this)">Zaloguj się</button><br /><br />
+			<p id="signUpLink" class="main-link" onclick="changetypeToRegister()"><b>Nie masz konta? Zarejestruj się</b></p>
+			<button class="btn delete" onclick="zamknijLogowanie()" style="width: 100px; height: 30px"  >Powrot</button><br /><br />
+
+		</article>
+
+	<article id="sportDataContainer" class="hide" style="article {
+  		min-height: calc(100% - 170px);
+  		margin-left: 10%;
+		width:60%;
+	  	padding: 80px 10% 50px 10%;
+		}" >
+			<h2>Ankieta o sporcie</h2>
+			<br/>
+			<h3 class="left">1. Jak bardzo interesujesz sie się sportem? </h3>
+			<ul>
+				<li><p>wcale</p></li>
+				<li><p>uprawiam sport</p></li>
+				<li><p>ogladam sport</p></li>
+				<li><p>ogladam i uprawiam sport</p></li>
+			</ul>
+			<canvas id="1-sport-canvas" width="600" height="250"></canvas>
+			<h3 class="left">2. Jak często uprawiasz sport?</h3>
+			<ul>
+				<li><p>1 raz w miesiącu</p></li>
+				<li><p>kilka razy w tygodniu</p></li>
+				<li><p>kilka razy w miesiącu</p></li>
+				<li><p>raz w tygodniu</p></li>
+			</ul>
+			<canvas id="2-sport-canvas" width="600" height="250"></canvas>
+			<h3 class="left">3. Jak przygotowujesz się do uprawiania sportu? </h3>
+			<ul>
+				<li><p>wcale</p></li>
+				<li><p>kupuję specjalny sprzęt</p></li>
+				<li><p>kupuję odzież sportową</p></li>
+				<li><p>ogladam tutoriale</p></li>
+			</ul>
+			<canvas id="3-sport-canvas" width="600" height="250"></canvas>
+			<h3 class="left">4. Gdzie najbardziej lubisz ćwiczyć?</h3>
+			<ul>
+				<li><p>na świeżym powietrzu</p></li>
+				<li><p>na siłowni</p></li>
+				<li><p>na sali gimnastycznej</p></li>
+				<li><p>w domu</p></li>
+			</ul>
+			<canvas id="4-sport-canvas" width="600" height="250"></canvas>
+			<h3 class="left">5. Od ilu lat uprawiasz sport?</h3>
+			<ul>
+				<li><p>nie uprawiam sportu regularnie</p></li>
+				<li><p>od dziecka</p></li>
+				<li><p>od ponad roku</p></li>
+				<li><p>od mniej niż roku</p></li>
+			</ul>
+			<canvas id="5-sport-canvas" width="600" height="250"></canvas>
+			<button  class="btn" id="btnSportQuest"  style=" width: 120px; height: 40px"onclick="closeStatistics()">Zamknij Ankiete</button>
+			
+		</article>
+
+		<article id="sportQuestContainer" class="center hide">
+		<h2>Zainteresowanie sportem wśród społeczeństwa</h2>
+		<br />
+		<h3 id="1-question-sport" class="left">1. Jak bardzo interesujesz sie sportem? </h3>
+		<div class="answer">
+			<input type="radio" name="1-answer-sport" value="1-1-sport">
+			<label>wcale</label>
+		</div>
+		<div class="answer">
+			<input type="radio" name="1-answer-sport" value="1-2-sport">
+			<label>uprawiam sport</label>
+		</div>
+		<div class="answer">
+			<input type="radio" name="1-answer-sport" value="1-3-sport">
+			<label>ogladam sport</label>
+		</div>
+		<div class="answer">
+			<input type="radio" name="1-answer-sport" value="1-4-sport">
+			<label>ogladam i uprawiam sport</label>
+		</div>
+		<br />
+		<h3 id="2-question-sport" class="left">2. Jak często uprawiasz sport?</h3>
+		<div class="answer">
+			<input type="radio" name="2-answer-sport" value="2-1-sport">
+			<label>1 raz w miesiącu</label>
+		</div>
+		<div class="answer">
+			<input type="radio" name="2-answer-sport" value="2-2-sport">
+			<label>kilka razy w miesiacy</label>
+		</div>
+		<div class="answer">
+			<input type="radio" name="2-answer-sport" value="2-3-sport">
+			<label>kilka razy w miesiącu</label>
+		</div>
+		<div class="answer">
+			<input type="radio" name="2-answer-sport" value="2-4-sport">
+			<label>kilka razy w tygodniu</label>
+		</div>
+		<br />
+		<h3 id="3-question-sport" class="left">3. Jak najczesciej przygotowujesz się do uprawiania sportu? </h3>
+		<div class="answer">
+			<input type="radio" name="3-answer-sport" value="3-1-sport">
+			<label>wcale</label>
+		</div>
+		<div class="answer">
+			<input type="radio" name="3-answer-sport" value="3-2-sport">
+			<label>kupuje odpowiedni sprzed</label>
+		</div>
+		<div class="answer">
+			<input type="radio" name="3-answer-sport" value="3-3-sport">
+			<label>kupuję odzież sportową</label>
+		</div>
+		<div class="answer">
+			<input type="radio" name="3-answer-sport" value="3-4-sport">
+			<label>ogladam tutoriale w internecie</label>
+		</div>
+		<br />
+		<h3 id="4-question-sport" class="left">4. Gdzie najczesciej ćwiczyć?</h3>
+		<div class="answer">
+			<input type="radio" name="4-answer-sport" value="4-1-sport">
+			<label>na świeżym powietrzu</label>
+		</div>
+		<div class="answer">
+			<input type="radio" name="4-answer-sport" value="4-2-sport">
+			<label>na siłowni</label>
+		</div>
+		<div class="answer">
+			<input type="radio" name="4-answer-sport" value="4-3-sport">
+			<label>na sali do cwiczen</label>
+		</div>
+		<div class="answer">
+			<input type="radio" name="4-answer-sport" value="4-4-sport">
+			<label>w domu</label>
+		</div>
+		<br />
+		<h3 id="5-question-sport" class="left">5. Od ilu lat uprawiasz sport?</h3>
+		<div class="answer">
+			<input type="radio" name="5-answer-sport" value="5-1-sport">
+			<label>nie uprawiam sportu regularnie</label>
+		</div>
+		<div class="answer">
+			<input type="radio" name="5-answer-sport" value="5-2-sport">
+			<label>od dziecka</label>
+		</div>
+		<div class="answer">
+			<input type="radio" name="5-answer-sport" value="5-3-sport">
+			<label>od ponad roku</label>
+		</div>
+		<div class="answer">
+			<input type="radio" name="5-answer-sport" value="5-4-sport">
+			<label>od mniej niż roku</label>
+		</div><br /><br />
+		<button  class="btn" id="btnSportQuest"  style=" width: 120px; height: 40px"onclick="insertData(this)">Zapisz</button>
+		<button  class="btn delete" onclick="zamknijAnkiete()"  style=" width: 120px; height: 40px">Anuluj</button><br/><br/>
+	</article>
+
+	<div id="mainDiv">
+	</div>
+
+	</body>
+</html>
